@@ -33,11 +33,11 @@ jobs:
         with: 
           name: code
           path: .
-      - name: Upload compiled code
+      - name: Upload jar
         uses: actions/upload-artifact@v2
         with:
-          name: compiled_code
-          path: .
+          name: build
+          path: app/build/libs/app-0.1-all.jar
   Test:
     runs-on: ubuntu-latest
     needs: Build
@@ -57,7 +57,12 @@ jobs:
       - name: Download Repo
         uses: actions/download-artifact@v2
         with: 
-          name: compiled_code
+          name: code
+          path: .
+      - name: Download jar
+        uses: actions/download-artifact@v2
+        with: 
+          name: build
           path: .
       - name: build docker
         run: chmod +x ci/build-docker.sh && ci/build-docker.sh
