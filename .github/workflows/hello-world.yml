@@ -52,7 +52,7 @@ jobs:
         name: Unit-test
   Docker-image:
     runs-on: ubuntu-latest
-    needs: [Build]
+    needs: [Build, Test]
     steps:
       - name: Download Repo
         uses: actions/download-artifact@v2
