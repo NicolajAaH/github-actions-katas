@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: compiled_code
-          path: app/build/libs/app-0.1.all.jar
+          path: .
   Test:
     runs-on: ubuntu-latest
     needs: Build
